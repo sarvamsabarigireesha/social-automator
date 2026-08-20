@@ -1,1 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Automator</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <h1>📲 Social Automator</h1>
+  <p class="sub">Instagram • Facebook • YouTube — comment replies, DMs & scheduling, all from one dashboard</p>
+  <a class="connect-btn" href="/auth/youtube">Connect YouTube</a>
+</header>
 
+<main>
+  <section class="card">
+    <h2>Auto-Reply Rules</h2>
+    <p class="hint">When a comment matches a keyword, it auto-replies (and optionally sends a DM). Use <code>*</code> as keyword to match any comment as a fallback rule.</p>
+    <form id="ruleForm">
+      <select name="platform" required>
+        <option value="instagram">Instagram</option>
+        <option value="facebook">Facebook</option>
+        <option value="youtube">YouTube</option>
+      </select>
+      <input name="keyword" placeholder="Keyword (or *)" required>
+      <input name="reply_text" placeholder="Reply text" required>
+      <label class="checkbox"><input type="checkbox" name="send_dm"> Also send DM</label>
+      <input name="dm_text" placeholder="DM text (optional)">
+      <button type="submit">Add Rule</button>
+    </form>
+    <table id="rulesTable">
+      <thead><tr><th>Platform</th><th>Keyword</th><th>Reply</th><th>DM?</th><th>Active</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>Bulk Schedule Posts</h2>
+    <form id="postForm">
+      <select name="platform" required>
+        <option value="facebook">Facebook</option>
+        <option value="instagram">Instagram</option>
+        <option value="youtube">YouTube (video file path)</option>
+      </select>
+      <input name="caption" placeholder="Caption / title">
+      <input name="media_path" placeholder="Image/Video URL or local path">
+      <input name="scheduled_time" type="datetime-local" required>
+      <button type="submit">Schedule</button>
+    </form>
+    <table id="postsTable">
+      <thead><tr><th>Platform</th><th>Caption</th><th>When</th><th>Status</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>Activity Log</h2>
+    <table id="logsTable">
+      <thead><tr><th>Platform</th><th>Action</th><th>Detail</th><th>When</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>
